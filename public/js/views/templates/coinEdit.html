@@ -1,0 +1,32 @@
+<div class="coinContainer">
+    <table class="coinStyledTable">
+        <tr class="coinTableHeader">
+            <th align="left">Атрибут</th>
+            <th align="left">Значение</th>
+        </tr>
+        <tr>
+            <td>Валюта</td>
+            <td><input id="unit" type="text" value='<%= unit %>'></td>
+        </tr>
+        <tr>
+            <td>Номинал</td>
+            <td><input id="value" type="text" value='<%= value %>'></td>
+        </tr>
+        <tr>
+            <td>Страна</td>
+            <td><input id="country" type="text" value='<%= country %>'></td>
+        </tr>
+        <tr>
+            <td>Год выпуска</td>
+            <td><input id="year" type="text"  value='<%= year %>'></td>
+        </tr>
+        <tr>
+            <td>Комментарий</td>
+            <td><textarea id="additionalInfo" cols="20" rows="4"><%= additionalInfo %></textarea>
+        </tr>
+    </table>
+    <div class="btnsEdit">
+        <span id="save" class="btn-class">Save</span>
+        <span id="cancel" class="btn-class">Cancel</span>
+    </div>
+</div>

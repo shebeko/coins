@@ -1,0 +1,82 @@
+@lightgray: #F5F5F5;
+@forestgreen: forestgreen;
+@td_height: 25px;
+@td_width:161px;
+
+// view containers
+.coinContainer {
+  border: solid thick @forestgreen;
+  width: 300px;
+  padding: 10px;
+  padding-left: 30px;
+  .border-radius(10px);
+}
+
+// table styles
+.coinStyledTable {
+  border-collapse: separate;
+  border: solid @lightgray;
+  .border-radius(14px);
+  font-size: 16px;
+}
+
+.coinStyledTable input {
+  width: @td_width;
+}
+
+.coinStyledTable textarea {
+  width: @td_width;
+  height: 63px;
+}
+
+.coinTableHeader {
+  background-color: @lightgray;
+}
+
+table.coinTableHeader th {border-bottom: solid thin lightgray;}
+
+table.coinStyledTable td:nth-child(odd) {
+  background-color: @lightgray;
+  font-weight: bold;
+}
+
+table.coinStyledTable td:nth-child(even) {
+  background-color: white;
+  font-weight: normal;
+  width: @td_width;
+}
+
+table.coinStyledTable td {
+  height: @td_height;
+}
+
+.btns {
+  margin-top: 50px;
+}
+
+.btnsEdit {
+  margin-top: 10px;
+}
+
+.btn-class {
+  background-color: @forestgreen;
+  color: floralwhite;
+  font-weight: bold;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  border: solid thick @forestgreen;
+  .border-radius(10px);
+  cursor: pointer;
+}
+
+.btn-class:hover {
+  background-color: limegreen;
+  border: solid thick limegreen;
+  .border-radius(10px);
+}
+
+.border-radius(@value)  {
+  -webkit-border-radius: @value;
+  -moz-border-radius: @value;
+  border-radius: @value;
+  background-clip: padding-box;
+}
