@@ -3,7 +3,6 @@ var Backbone = require('backbone');
 module.exports = Backbone.Model.extend({
     urlRoot: 'http://localhost:8686/coins',
     url: function() {
-        console.log(this.get("id") + '________');
         return this.urlRoot + '/' + this.get("id");
     },
     defaults: {
@@ -19,7 +18,7 @@ module.exports = Backbone.Model.extend({
             return {
                 attrValue: attrs.value,
                 attrName: 'Номинал',
-                msg: 'not a number'
+                msg: 'не является числом'
             };
         }
     }

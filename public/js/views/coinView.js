@@ -25,41 +25,28 @@ module.exports = base.extend({
     },
     cancel: function() {
         this.template = _.template(viewTemplate);
+        this.model.fetch(); // triggers model's 'change' event if and only if the model's attributes changed after fetching
         this.render();
     },
     save: function() {
         // store in database
         this.template = _.template(viewTemplate);
-        if (checkIfChanged(this)) {
-            this.model.set({
-                'unit': $("#unit").val(),
-                'value': $("#value").val(),
-                'country': $("#country").val(),
-                'year': $("#year").val(),
-                'additionalInfo': $("#additionalInfo").val()
-            });
-            this.model.save();
-        } else {
-            this.render();
-        }
+        // don't rerender view automatically after setting new attributes values to model
+        this.model.set({
+            'unit': $("#unit").val(),
+            'value': $("#value").val(),
+            'country': $("#country").val(),
+            'year': $("#year").val(),
+            'additionalInfo': $("#additionalInfo").val()
+         }, {silent:true});
+         this.model.save();
     },
     delete: function() {
         this.model.destroy();
     },
     catchError: function() {
         var errorObj = this.model.validationError;
-        console.log(errorObj.attrName + " " + errorObj.attrValue + ": " + errorObj.msg);
+        var errorMsg = errorObj.attrName + " " + errorObj.attrValue + " " + errorObj.msg;
+        $("#errorMsg").html(errorMsg);
     }
 });
-
-function checkIfChanged(viewObj) {
-    if (($("#unit").val() != viewObj.model.get("unit")) ||
-        ($("#value").val() != viewObj.model.get("value")) ||
-        ($("#country").val() != viewObj.model.get("country")) ||
-        ($("#year").val() != viewObj.model.get("year")) ||
-        ($("#additionalInfo").val() != viewObj.model.get("additionalInfo"))
-    ) {
-        console.log("fuck");
-        return true;
-    } else return false;
-}
